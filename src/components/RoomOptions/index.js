@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import CloseIcon from '@mui/icons-material/Close';
 // import { styles as classes } from './styles.styles';
 
 const RoomOptions = () => {
@@ -59,6 +60,7 @@ const RoomOptions = () => {
         <Box className="OptionSidebar">
           <Box className="Logo">
             <img src={require('../../assets/images/tarkett-logo.png')} alt="" />
+            <CloseIcon className="OptionCloseIcon" />
           </Box>
           <Box className="OptionHeading">Make Your Selections</Box>
           <Box className="OptionAccording">

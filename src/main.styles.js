@@ -10,6 +10,12 @@ const MainStyles = () => {
         },
         '.Logo': {
           padding: '10px 20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        },
+        '.OptionCloseIcon': {
+          cursor: 'pointer',
         },
         '.MainRoomImg': {
           maxWidth: '100%',
