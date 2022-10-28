@@ -28,13 +28,24 @@ const MainStyles = () => {
           marginRight: 'auto',
         },
         '.OptionSidebar': {
-          background: '#fff',
+          // background: '#fff',
           maxWidth: '450px',
-          height: '100vh',
-          position: 'fixed',
-          top: '0',
-          left: '0',
-          zIndex: '99',
+          // height: '100vh',
+          // position: 'fixed',
+          // top: '0',
+          // left: '0',
+          // zIndex: '99',
+        },
+        '.ToggleHeader': {
+          display: 'flex',
+          alignItems: 'center',
+          padding: '12px 30px 8px 30px',
+        },
+        '.ToggleLogo img': {
+          maxWidth: '100%',
+        },
+        '.ToggleLogo': {
+          maxWidth: '200px',
         },
         '.MainContainer': {
           position: 'relative',
@@ -50,6 +61,10 @@ const MainStyles = () => {
           padding: '5px 20px',
           fontWeight: '600',
           marginBottom: '2px',
+        },
+        '.MuiButtonBase-root.MuiButton-root.ToggleButton': {
+          color: '#102F54',
+          marginLeft: '20px',
         },
         '.MuiButtonBase-root.MuiAccordionSummary-root': {
           background: 'RGBA(16,47,84,0.5)',
