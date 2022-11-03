@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle } from 'react';
 import {
   Box,
   Select,
@@ -19,11 +19,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 // import { styles as classes } from './styles.styles';
 
-const RoomOptions = () => {
-  const [age, setAge] = React.useState('');
+const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
+  const { shape, colorSrc, installation } = roomData;
 
   const handleChangeSelect = (event) => {
-    setAge(event.target.value);
+    onChange({
+      shape: event.target.value,
+    });
   };
 
   const [expanded, setExpanded] = React.useState('panel1');
@@ -43,9 +45,14 @@ const RoomOptions = () => {
     ) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
+
+  useImperativeHandle(ref, () => ({
+    openDrawer() {
+      setState({ ...state, ['left']: true });
+    },
+  }));
 
   const CustomExpandIcon = () => {
     return (
@@ -125,7 +132,18 @@ const RoomOptions = () => {
                       </AccordionSummary>
                       <AccordionDetails>
                         <Box className="ColorSelectionContainer">
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              colorSrc ===
+                                require('../../assets/images/solitude.png') &&
+                              'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                colorSrc: require('../../assets/images/solitude.png'),
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail">
                               <img
                                 src={require('../../assets/images/solitude.png')}
@@ -136,7 +154,18 @@ const RoomOptions = () => {
                               Solitude 1905
                             </Typography>
                           </Box>
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              colorSrc ===
+                                require('../../assets/images/abalone.png') &&
+                              'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                colorSrc: require('../../assets/images/abalone.png'),
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail">
                               <img
                                 src={require('../../assets/images/abalone.png')}
@@ -147,7 +176,18 @@ const RoomOptions = () => {
                               Abalone 1909
                             </Typography>
                           </Box>
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              colorSrc ===
+                                require('../../assets/images/alabaster.png') &&
+                              'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                colorSrc: require('../../assets/images/alabaster.png'),
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail">
                               <img
                                 src={require('../../assets/images/alabaster.png')}
@@ -156,39 +196,6 @@ const RoomOptions = () => {
                             </Box>
                             <Typography className="ColorSelectionTitle">
                               Alabaster 1902
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/haylo.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Haylo 4171
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/powder-gray.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Powder Gray 1903
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/steele.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Steele 1906
                             </Typography>
                           </Box>
                         </Box>
@@ -207,7 +214,16 @@ const RoomOptions = () => {
                       </AccordionSummary>
                       <AccordionDetails>
                         <Box className="ColorSelectionContainer">
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              installation === 'herringbone' && 'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                installation: 'herringbone',
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail ColorSelectionOpacity">
                               <img
                                 src={require('../../assets/images/monolithic.png')}
@@ -215,10 +231,19 @@ const RoomOptions = () => {
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              Monolithic
+                              HerringBone
                             </Typography>
                           </Box>
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              installation === 'qt' && 'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                installation: 'qt',
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail ColorSelectionOpacity">
                               <img
                                 src={require('../../assets/images/quarter-turn.png')}
@@ -229,7 +254,16 @@ const RoomOptions = () => {
                               Quarter Turn
                             </Typography>
                           </Box>
-                          <Box className="ColorSelectionContent">
+                          <Box
+                            className={`ColorSelectionContent ${
+                              installation === 'brick' && 'Active'
+                            }`}
+                            onClick={() =>
+                              onChange({
+                                installation: 'brick',
+                              })
+                            }
+                          >
                             <Box className="ColorSelectionThumbnail ColorSelectionOpacity">
                               <img
                                 src={require('../../assets/images/brick.png')}
@@ -238,28 +272,6 @@ const RoomOptions = () => {
                             </Box>
                             <Typography className="ColorSelectionTitle">
                               Brick
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail ColorSelectionOpacity">
-                              <img
-                                src={require('../../assets/images/ashlar.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Ashlar
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail ColorSelectionOpacity">
-                              <img
-                                src={require('../../assets/images/random.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Random
                             </Typography>
                           </Box>
                         </Box>
@@ -278,48 +290,15 @@ const RoomOptions = () => {
                       </AccordionSummary>
                       <AccordionDetails>
                         <Box className="ColorSelectionContainer">
-                          <Box className="ColorSelectionContent">
+                          <Box className="ColorSelectionContent Active">
                             <Box className="ColorSelectionThumbnail">
                               <img
-                                src={require('../../assets/images/room-scene-thumb-1.png')}
+                                src={require('../../assets/images/1_Lobby_Area.png')}
                                 alt=""
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
                               Lobby
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/room-scene-thumb-1.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Office
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/room-scene-thumb-1.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Home
-                            </Typography>
-                          </Box>
-                          <Box className="ColorSelectionContent">
-                            <Box className="ColorSelectionThumbnail">
-                              <img
-                                src={require('../../assets/images/room-scene-thumb-1.png')}
-                                alt=""
-                              />
-                            </Box>
-                            <Typography className="ColorSelectionTitle">
-                              Open Office
                             </Typography>
                           </Box>
                         </Box>
@@ -345,38 +324,16 @@ const RoomOptions = () => {
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
-                              value={age}
-                              label="Age"
+                              value={shape}
+                              label="Size"
                               placeholder="Select"
                               onChange={handleChangeSelect}
                             >
-                              <MenuItem value={10}>Ten</MenuItem>
-                              <MenuItem value={20}>Twenty</MenuItem>
-                              <MenuItem value={30}>Thirty</MenuItem>
+                              <MenuItem value={'19X36'}>19X36</MenuItem>
+                              <MenuItem value={'24X24'}>24X24</MenuItem>
                             </Select>
                           </FormControl>
                         </Box>
-                      </AccordionDetails>
-                    </Accordion>
-                    <Accordion
-                      expanded={expanded === 'panel5'}
-                      onChange={handleChange('panel5')}
-                    >
-                      <AccordionSummary
-                        expandIcon={<CustomExpandIcon />}
-                        aria-controls="panel5d-content"
-                        id="panel5d-header"
-                      >
-                        <Typography>STYLE</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Suspendisse malesuada lacus ex, sit amet blandit
-                          leo lobortis eget. Lorem ipsum dolor sit amet,
-                          consectetur adipiscing elit. Suspendisse malesuada
-                          lacus ex, sit amet blandit leo lobortis eget.
-                        </Typography>
                       </AccordionDetails>
                     </Accordion>
                   </Box>
@@ -388,6 +345,6 @@ const RoomOptions = () => {
       ))}
     </div>
   );
-};
+});
 
 export default RoomOptions;

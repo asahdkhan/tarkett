@@ -11,3 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.inner-html-parImg .inner-html {
+  background-size: cover !important;
+}
+
+.renderagain {
+  transform: scale3d(1, 1, 1) !important;
+}
+
+.room-scene-container {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+.room-scene-finishes-container {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.finishes-surface {
+  /*background-size: 550px !important;*/
+  position: absolute;
+  -webkit-transform-origin: 0px 0px 0px;
+  transform-origin: 0px 0px 0px;
+}
+
+.inner-surface-block {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.finishes-content-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  z-index: -10;
+}
+.rotate-0 {
+  transform: rotate(0deg);
+}
+.rotate-120 {
+  transform: rotate(120deg);
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.rotate-60 {
+  transform: rotate(60deg);
+}
+.rotate-90 {
+  transform: rotate(90deg);
+}
+.rotate-270 {
+  transform: rotate(270deg);
+}
+.rotate-240 {
+  transform: rotate(240deg);
+}
+.rotate-300 {
+  transform: rotate(300deg);
+}
+.rotate-45 {
+  transform: rotate(45deg);
+}
