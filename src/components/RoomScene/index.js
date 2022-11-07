@@ -234,6 +234,26 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
     var bg = finishes.src;
 
     switch (installation) {
+      case 'monolithic':
+        // console.log(quality);
+        if (angle == 270) {
+          BA = 180;
+        }
+        while (BT <= CanvasH + H) {
+          var BAFirst = BA;
+          while (BL <= CanvasW) {
+            htmlStringHtml += `<div class="inner-html rotate-${BA}"  id ="${i}" style='position:absolute;display:inline-block;width:${W}px;height:${H}px;top:${BT}px;left:${BL}px;background:url(${bg});'></div>`;
+            i++;
+            BL = BL + W;
+            BA == 180 ? (BA = 0) : (BA = 180);
+            //console.log(i+") - BL: "+BL+", BT: "+BT+"=== CanvasH: "+CanvasH);
+          }
+
+          BT = BT + H;
+          BL = 0;
+          BAFirst == 180 ? (BA = 0) : (BA = 180);
+        }
+        break;
       case 'herringbone':
         // This add extra plus 1 to herringbone if inchtopixel factor is in odd number.
         if (angle == '45') {

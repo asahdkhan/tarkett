@@ -135,67 +135,67 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                           <Box
                             className={`ColorSelectionContent ${
                               colorSrc ===
-                                require('../../assets/images/solitude.png') &&
+                                require('../../assets/images/TH_TC_Braided_SiltedClay.jpg') &&
                               'Active'
                             }`}
                             onClick={() =>
                               onChange({
-                                colorSrc: require('../../assets/images/solitude.png'),
+                                colorSrc: require('../../assets/images/TH_TC_Braided_SiltedClay.jpg'),
                               })
                             }
                           >
                             <Box className="ColorSelectionThumbnail">
                               <img
-                                src={require('../../assets/images/solitude.png')}
+                                src={require('../../assets/images/TH_TC_Braided_SiltedClay.jpg')}
                                 alt=""
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              Solitude 1905
+                              Braided
                             </Typography>
                           </Box>
                           <Box
                             className={`ColorSelectionContent ${
                               colorSrc ===
-                                require('../../assets/images/abalone.png') &&
+                                require('../../assets/images/TH_TC_ChainReaction_ShuttleLime.jpeg') &&
                               'Active'
                             }`}
                             onClick={() =>
                               onChange({
-                                colorSrc: require('../../assets/images/abalone.png'),
+                                colorSrc: require('../../assets/images/TH_TC_ChainReaction_ShuttleLime.jpeg'),
                               })
                             }
                           >
                             <Box className="ColorSelectionThumbnail">
                               <img
-                                src={require('../../assets/images/abalone.png')}
+                                src={require('../../assets/images/TH_TC_ChainReaction_ShuttleLime.jpeg')}
                                 alt=""
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              Abalone 1909
+                              ChainReaction
                             </Typography>
                           </Box>
                           <Box
                             className={`ColorSelectionContent ${
                               colorSrc ===
-                                require('../../assets/images/alabaster.png') &&
+                                require('../../assets/images/TH_TC_TextureMap_MountainSoil.jpg') &&
                               'Active'
                             }`}
                             onClick={() =>
                               onChange({
-                                colorSrc: require('../../assets/images/alabaster.png'),
+                                colorSrc: require('../../assets/images/TH_TC_TextureMap_MountainSoil.jpg'),
                               })
                             }
                           >
                             <Box className="ColorSelectionThumbnail">
                               <img
-                                src={require('../../assets/images/alabaster.png')}
+                                src={require('../../assets/images/TH_TC_TextureMap_MountainSoil.jpg')}
                                 alt=""
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              Alabaster 1902
+                              TextureMap
                             </Typography>
                           </Box>
                         </Box>
@@ -216,11 +216,11 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                         <Box className="ColorSelectionContainer">
                           <Box
                             className={`ColorSelectionContent ${
-                              installation === 'herringbone' && 'Active'
+                              installation === 'monolithic' && 'Active'
                             }`}
                             onClick={() =>
                               onChange({
-                                installation: 'herringbone',
+                                installation: 'monolithic',
                               })
                             }
                           >
@@ -231,10 +231,10 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              HerringBone
+                              Monolithic
                             </Typography>
                           </Box>
-                          <Box
+                          {/* <Box
                             className={`ColorSelectionContent ${
                               installation === 'qt' && 'Active'
                             }`}
@@ -273,7 +273,7 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                             <Typography className="ColorSelectionTitle">
                               Brick
                             </Typography>
-                          </Box>
+                          </Box> */}
                         </Box>
                       </AccordionDetails>
                     </Accordion>
@@ -329,7 +329,7 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                               placeholder="Select"
                               onChange={handleChangeSelect}
                             >
-                              <MenuItem value={'19X36'}>19X36</MenuItem>
+                              {/* <MenuItem value={'19X36'}>19X36</MenuItem> */}
                               <MenuItem value={'24X24'}>24X24</MenuItem>
                             </Select>
                           </FormControl>

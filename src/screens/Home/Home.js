@@ -9,13 +9,13 @@ const Finishes = {
   surface: [
     {
       perspective: [
-        [0.21321428571428572, 0.63430777716492],
-        [0.7889285714285714, 0.6321014892443464],
-        [-0.6025, 1.0165471594043023],
-        [1.6330357142857144, 1.014892443463872],
+        [0.21607142857142858, 0.6321014892443464],
+        [-0.6046428571428571, 1.0159955874241589],
+        [0.7882142857142858, 0.6332046332046332],
+        [1.6282142857142856, 1.0137892995035853],
       ],
 
-      inchToPixelFactor: 4,
+      inchToPixelFactor: 6.5,
       // height: '336',
       // width: '282',
     },
@@ -24,8 +24,8 @@ const Finishes = {
 
 const Home = () => {
   const [roomOptions, setOptions] = useState({
-    colorSrc: require(`../../assets/images/alabaster.png`),
-    installation: 'brick',
+    colorSrc: require(`../../assets/images/TH_TC_Braided_SiltedClay.jpg`),
+    installation: 'monolithic',
     shape: '24X24',
   });
 
