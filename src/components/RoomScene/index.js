@@ -1,11 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import numeric from 'numeric';
 import uniqueRandom from 'unique-random';
+
+function useWindowSize(ref) {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize({
+        height: ref.current.clientHeight,
+        width: ref.current.clientWidth,
+      });
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
 
 const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
   const [hover, setHover] = useState(false);
   const [roomSceneDimension, setRoomDimension] = useState({});
   const [surface, setSurface] = useState({});
+
+  const imageDimension = useRef();
+
+  const { height, width } = useWindowSize(imageDimension);
+
+  useEffect(() => {
+    setRoomDimension({ ...roomSceneDimension, height, width });
+  }, [height]);
 
   const onImageLoad = (img) => {
     setRoomDimension({
@@ -415,10 +439,15 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
   };
 
   return (
-    <div onMouseOver={() => setHover(true)} className="room-scene-container">
+    <div
+      id="renderRoomScene"
+      onMouseOver={() => setHover(true)}
+      className="room-scene-container"
+    >
       <div>
         <img
           src={roomScene}
+          ref={imageDimension}
           onLoad={onImageLoad}
           alt="RoomScene"
           style={{ maxWidth: '100%' }}

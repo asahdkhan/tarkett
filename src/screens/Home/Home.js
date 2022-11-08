@@ -24,7 +24,7 @@ const Finishes = {
 
 const Home = () => {
   const [roomOptions, setOptions] = useState({
-    colorSrc: require(`../../assets/images/TH_TC_Braided_SiltedClay.jpg`),
+    colorSrc: require(`../../assets/images/TH_TC_2ndPower_Electricity.jpg`),
     installation: 'monolithic',
     shape: '24X24',
   });
@@ -53,7 +53,9 @@ const Home = () => {
         <Box className="MainContainer">
           <Box
             className="RoomScene"
-            onClick={() => childRef.current.openDrawer()}
+            onClick={() => {
+              childRef.current.openDrawer();
+            }}
           >
             <RoomScene
               roomScene={RoomSceneImage}

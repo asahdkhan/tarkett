@@ -135,23 +135,23 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                           <Box
                             className={`ColorSelectionContent ${
                               colorSrc ===
-                                require('../../assets/images/TH_TC_Braided_SiltedClay.jpg') &&
+                                require('../../assets/images/TH_TC_2ndPower_Electricity.jpg') &&
                               'Active'
                             }`}
                             onClick={() =>
                               onChange({
-                                colorSrc: require('../../assets/images/TH_TC_Braided_SiltedClay.jpg'),
+                                colorSrc: require('../../assets/images/TH_TC_2ndPower_Electricity.jpg'),
                               })
                             }
                           >
                             <Box className="ColorSelectionThumbnail">
                               <img
-                                src={require('../../assets/images/TH_TC_Braided_SiltedClay.jpg')}
+                                src={require('../../assets/images/TH_TC_2ndPower_Electricity.jpg')}
                                 alt=""
                               />
                             </Box>
                             <Typography className="ColorSelectionTitle">
-                              Braided
+                              2ndPower
                             </Typography>
                           </Box>
                           <Box
@@ -253,7 +253,7 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                             <Typography className="ColorSelectionTitle">
                               Quarter Turn
                             </Typography>
-                          </Box>
+                          </Box>*/}
                           <Box
                             className={`ColorSelectionContent ${
                               installation === 'brick' && 'Active'
@@ -273,7 +273,7 @@ const RoomOptions = forwardRef(({ onChange, roomData }, ref) => {
                             <Typography className="ColorSelectionTitle">
                               Brick
                             </Typography>
-                          </Box> */}
+                          </Box>
                         </Box>
                       </AccordionDetails>
                     </Accordion>
