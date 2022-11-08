@@ -421,13 +421,10 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
           src={roomScene}
           onLoad={onImageLoad}
           alt="RoomScene"
-          style={{ maxWidth: '1920px' }}
+          style={{ maxWidth: '100%' }}
         />
       </div>
-      <div
-        className="room-scene-finishes-container"
-        style={{ width: '1920px' }}
-      >
+      <div className="room-scene-finishes-container" style={{ width: '100%' }}>
         <div className="finishes-content-box">
           <div className="finishes-surface" style={surface.perspective}>
             <div className="inner-surface-block">{getInstallation()}</div>

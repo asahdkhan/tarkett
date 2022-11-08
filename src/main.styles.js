@@ -14,6 +14,14 @@ const MainStyles = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
         },
+        '.SideContainer': {
+          width: '100%',
+          position: 'fixed',
+          top: '0',
+          left: '0',
+          zIndex: '999',
+          background: '#fff',
+        },
         '.OptionCloseIcon': {
           cursor: 'pointer',
         },
