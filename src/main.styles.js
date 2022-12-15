@@ -122,6 +122,7 @@ const MainStyles = () => {
         '.ColorSelectionThumbnail': {
           width: '100%',
           maxWidth: '100%',
+          height: 120,
           textAlign: 'center',
         },
         '.ColorSelectionThumbnail img': {

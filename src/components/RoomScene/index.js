@@ -18,20 +18,30 @@ function useWindowSize(ref) {
   return size;
 }
 
-const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
+const RoomScene = ({ roomData, finishes, installation, shape, angle }) => {
   const [hover, setHover] = useState(false);
   const [roomSceneDimension, setRoomDimension] = useState({});
   const [surface, setSurface] = useState({});
 
   const imageDimension = useRef();
+  const bottomRef = useRef();
 
-  const { height, width } = useWindowSize(imageDimension);
+  let { height, width } = useWindowSize(imageDimension);
+
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
   useEffect(() => {
     setRoomDimension({ ...roomSceneDimension, height, width });
   }, [height]);
 
   const onImageLoad = (img) => {
+    console.log(
+      'height, width',
+      img.target.offsetHeight,
+      img.target.offsetWidth,
+    );
     setRoomDimension({
       height: img.target.offsetHeight,
       width: img.target.offsetWidth,
@@ -45,7 +55,7 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
   useEffect(() => {
     if (roomSceneDimension.width) {
       setSurface(
-        getPerspective(roomSceneDimension, finishes.surface[0], angle),
+        getPerspective(roomSceneDimension, roomData.surface[0], angle),
       );
     }
   }, [roomSceneDimension]);
@@ -200,6 +210,7 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
       });
     }
     let tran = getTransform(From, To);
+    console.log('tran', tran);
     let matrix3d =
       tran[0][0] +
       ',' +
@@ -235,6 +246,8 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
     surface.transform = 'matrix3d(' + matrix3d + ')';
     surface.WebkitTransform = 'matrix3d(' + matrix3d + ')';
 
+    console.log('surface', surface);
+
     return { perspective: surface, heightRound, widthRound, inchToPixelFactor };
   };
 
@@ -255,7 +268,7 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
     var increment = 1;
     var i = 0;
 
-    var bg = finishes.src;
+    var bg = finishes;
 
     switch (installation) {
       case 'monolithic':
@@ -446,7 +459,7 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
     >
       <div>
         <img
-          src={roomScene}
+          src={require(`../../assets${roomData.src}`)}
           ref={imageDimension}
           onLoad={onImageLoad}
           alt="RoomScene"
@@ -455,11 +468,18 @@ const RoomScene = ({ roomScene, finishes, installation, shape, angle }) => {
       </div>
       <div className="room-scene-finishes-container" style={{ width: '100%' }}>
         <div className="finishes-content-box">
-          <div className="finishes-surface" style={surface.perspective}>
+          <div
+            className="finishes-surface"
+            style={{
+              ...surface.perspective,
+              // ...(true && { width: 3300 }),
+            }}
+          >
             <div className="inner-surface-block">{getInstallation()}</div>
           </div>
         </div>
       </div>
+      <div ref={bottomRef} />
     </div>
   );
 };
